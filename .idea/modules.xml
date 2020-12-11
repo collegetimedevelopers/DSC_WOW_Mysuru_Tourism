@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MysuruTourism.iml" filepath="$PROJECT_DIR$/.idea/modules/MysuruTourism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Mysuru_Tourism.iml" filepath="$PROJECT_DIR$/.idea/modules/Mysuru_Tourism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Mysuru_Tourism.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Mysuru_Tourism.app.iml" />
     </modules>
   </component>
 </project>
