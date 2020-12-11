@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="5">
+    <androidx.cardview.widget.CardView
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="4.85"
+        app:cardCornerRadius="10dp"
+        >
+    <ImageView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/home_viewPager_glimpses_image"
+        android:scaleType="fitXY"
+        android:fitsSystemWindows="true"
+        tools:ignore="ContentDescription" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name of the palce"
+        android:layout_weight="0.15"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="16sp"
+
+        android:fontFamily="serif"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:textColor="#BDBDBD"
+        android:background="#191717"
+        tools:ignore="RtlCompat"
+        android:id="@+id/home_viewPager_glimpses_place_name"/>
+
+
+</LinearLayout>

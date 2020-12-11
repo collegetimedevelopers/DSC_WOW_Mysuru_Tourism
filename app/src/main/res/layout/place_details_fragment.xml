@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#191717"
+    tools:context=".UI.PlaceDetails.PlaceDetailsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/place_details_kbv"
+
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/mysore" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/place_details_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:background="#fff"
+                android:padding="3dp"
+                android:visibility="gone" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/place_details_dot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@android:color/transparent"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp"
+                app:tabMode="fixed" />
+
+        </FrameLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="-9dp"
+            android:layout_marginEnd="12dp"
+            android:elevation="12dp"
+            android:padding="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/gotham_bold"
+                        android:padding="10dp"
+                        android:text="Mysore Palace"
+                        android:textColor="#170C4E"
+                        android:id="@+id/place_details_place_name"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        android:text="😁"
+                        android:id="@+id/place_details_place_rate"
+                        android:textAlignment="center"
+                        android:textColor="#F1BD04" />
+
+
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="7dp"
+                    android:background="@drawable/shimmer_skelton" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:weightSum="2">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_outline_access_time_24"
+
+                        app:tint="#298310" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:id="@+id/place_details_place_open_close"
+
+                        android:fontFamily="@font/cambria_bold"
+                        android:gravity="start|center_vertical"
+                        android:text="10:00 - 18:00"
+
+                        android:textSize="15sp"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="4dp"
+                            android:id="@+id/place_details_place_navigation"
+
+                            android:src="@drawable/ic_outline_navigation_24"
+                            app:tint="#1C0F8F" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="7dp"
+                    android:background="@drawable/shimmer_skelton" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/cambria_bold"
+                    android:padding="10dp"
+                    android:text="Souvenirs"
+                    android:textColor="#6E6A6A"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/place_details_recycler_souvenirs"
+
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:backgroundTint="#ECE8E8"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/cambria_bold"
+                            android:gravity="center"
+                            android:text="About"
+                            android:textColor="#2C2B2B"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="8dp"
+
+                            android:background="#FFF" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
+                            android:paddingBottom="18dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/cantata_one"
+                            android:text="The Mysore Palace is a historical palace and the royal residence at Mysore in the Indian State of Karnataka. It is the official residence of the Wadiyar dynasty and the seat of the Kingdom of Mysore. The palace is in the centre of Mysore, and faces the Chamundi Hills eastward.The architectural style of domes of the palace is commonly described as Indo-Saracenic, with blends of the Hindu, Mughal, Rajput, and Gothic styles. It is a three-story stone structure with marble domes, and has a 145-foot five-story tower. The palace is surrounded by a large garden. The entrance gate and arch hold the emblem and coat of arms of the kingdom of Mysore, around which is written the kingdom's motto in Sanskrit: न बिभॆति कदाचन ."
+
+                            android:textColor="#858080" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="-8dp"
+                    android:fontFamily="@font/cambria_bold"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Guides and Volunteers"
+                    android:textColor="#6E6A6A"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:id="@+id/place_details_recycler_guide"
+
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="-8dp"
+                    android:fontFamily="@font/cambria_bold"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Hotels Near Me"
+                    android:textColor="#6E6A6A"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:id="@+id/place_details_recycler_hotels_near_me"
+
+                    android:orientation="horizontal" />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="-8dp"
+                    android:fontFamily="@font/cambria_bold"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Bus Stop"
+                    android:textColor="#6E6A6A"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:id="@+id/place_details_recycler_bus_stop"
+                    android:orientation="horizontal" />
+
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#191717"
+    tools:context=".UI.Home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/mysore"
+                android:contentDescription="Mysore Palace"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitXY"/>
+
+        <com.romainpiel.shimmer.ShimmerTextView
+            android:id="@+id/shimmer_tv"
+            android:text="Welcome To \nThe Cultural Capital Of Karnataka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#252424"
+            android:padding="5dp"
+            android:layout_gravity="bottom"
+            android:textStyle="bold"
+            android:gravity="start"
+            app:reflectionColor="#FFFFFF"
+            android:fontFamily="@font/gotham_bold"
+            android:textSize="22sp"/>
+
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/gotham_bold"
+            android:padding="8dp"
+            android:text="Glimpse of Mysore"
+
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+
+        <io.supercharge.shimmerlayout.ShimmerLayout
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:id="@+id/home_shimmer_glimpse"
+            app:shimmer_angle="13"
+            android:padding="12dp"
+            app:shimmer_mask_width="0.1"
+            android:backgroundTint="#CDCDCD"
+            android:orientation="vertical"
+            app:shimmer_color="@android:color/white"
+            android:visibility="visible"
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/skeleton_linear">
+            <include layout="@layout/shimmer_glimpses"/>
+
+        </LinearLayout>
+
+        </io.supercharge.shimmerlayout.ShimmerLayout>
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:padding="3dp"
+            android:visibility="gone"
+            android:background="#191717"
+            android:layout_marginEnd="12dp"
+            android:id="@+id/home_viewPager"
+            android:layout_marginStart="12dp"
+            />
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-15dp"
+            android:id="@+id/home_dot"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            app:tabGravity="center"
+            android:background="@android:color/transparent"
+            app:tabMode="fixed"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabIndicatorHeight="0dp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/gotham_bold"
+            android:padding="8dp"
+            android:text="Hotels Nearby"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:background="#191717"
+            android:nestedScrollingEnabled="false"
+            android:id="@+id/home_recycler_hotel_nearby"
+            android:orientation="horizontal"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/gotham_bold"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:text="Top Attractions"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:background="#191717"
+            android:nestedScrollingEnabled="false"
+            android:id="@+id/home_recycler_top_attraction"
+            android:orientation="vertical"/>
+    </LinearLayout>
+</ScrollView>

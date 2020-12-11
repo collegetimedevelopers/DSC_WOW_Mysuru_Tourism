@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5">
+
+    <View
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:id="@+id/home_viewPager_glimpses_image"
+        android:layout_weight="4.85"
+        android:scaleType="fitXY"
+        android:background="@drawable/shimmer_skelton"
+        android:fitsSystemWindows="true"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_weight="0.15"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+
+        android:background="@drawable/shimmer_skelton"
+        android:layout_gravity="center"
+      />
+
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "241176276787",
+    "project_id": "mysuru-tourism-code-off",
+    "storage_bucket": "mysuru-tourism-code-off.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241176276787:android:65779a670331abce1dd846",
+        "android_client_info": {
+          "package_name": "com.CollegeTimeDevelopers.Mysuru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241176276787-6d02p9qj9i5gk702lcoacf6nvhpobbk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnLmnhKuOsbfRFeqveMoyN9RQBVx6O3DQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241176276787-6d02p9qj9i5gk702lcoacf6nvhpobbk4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
