@@ -7,6 +7,7 @@ import android.view.WindowManager;
 
 import com.CollegeTimeDevelopers.Mysuru.Common.Common;
 import com.CollegeTimeDevelopers.Mysuru.EventBus.TopAttractionClickEvent;
+import com.CollegeTimeDevelopers.Mysuru.UI.Emergency.Emergency;
 import com.CollegeTimeDevelopers.Mysuru.UI.Home.HomeFragment;
 import com.CollegeTimeDevelopers.Mysuru.UI.Hotel.HotelFragment;
 import com.CollegeTimeDevelopers.Mysuru.UI.PlaceDetails.PlaceDetailsFragment;
@@ -58,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-
-
+                        break;
+                    case 0:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Emergency()).commit();
                         break;
 
                 }
