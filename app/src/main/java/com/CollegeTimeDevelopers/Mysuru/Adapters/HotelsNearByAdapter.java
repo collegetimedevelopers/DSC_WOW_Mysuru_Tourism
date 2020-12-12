@@ -23,6 +23,9 @@ public class HotelsNearByAdapter extends RecyclerView.Adapter<HotelsNearByAdapte
     public HotelsNearByAdapter(Context context, List<HotelList> hotelLists) {
         this.context = context;
         this.hotelLists = hotelLists;
+
+        System.out.println("in adapter = ");
+
     }
 
     @NonNull
@@ -33,9 +36,13 @@ public class HotelsNearByAdapter extends RecyclerView.Adapter<HotelsNearByAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HotelsNearByAdapter.ViewHolder holder, int position) {
-        holder.hotelName.setText(hotelLists.get(position).getName());
-        holder.priceRange.setText(hotelLists.get(position).getPriceRange());
+
         Glide.with(context).load(hotelLists.get(position).getImageUrl()).into(holder.hotelImage);
+
+        holder.hotelName.setText(hotelLists.get(position).getName());
+
+        holder.priceRange.setText(hotelLists.get(position).getPriceRange());
+
 
 
     }

@@ -97,6 +97,7 @@ public class PlaceDetailsFragment extends Fragment {
         //Setting Up Hotels
 
         hotels_near_by_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
         hotels_near_by_recycler_view.setAdapter(new HotelsNearByAdapter(getContext(),selectedPlace.getNearBy().getHotels().getList()));
 
 

@@ -21,7 +21,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.CollegeTimeDevelopers.Mysuru.Adapters.HomeGlimpseViewPagerAdapter;
+import com.CollegeTimeDevelopers.Mysuru.Adapters.HotelsNearByAdapter;
 import com.CollegeTimeDevelopers.Mysuru.Adapters.TopAttractionsAdapter;
+import com.CollegeTimeDevelopers.Mysuru.Models.HotelModel;
+
+import com.CollegeTimeDevelopers.Mysuru.Models.NearBy.Lists.HotelList;
 import com.CollegeTimeDevelopers.Mysuru.Models.Places;
 import com.CollegeTimeDevelopers.Mysuru.Models.UI.Home.Glimpses;
 import com.CollegeTimeDevelopers.Mysuru.R;
@@ -43,11 +47,14 @@ public class HomeFragment extends Fragment {
     ShimmerTextView shimmerTextView;
     ViewPager2 viewPager;
 
+    RecyclerView hotel_recycler;
+
+List<HotelModel> hotelsList;
 
     TabLayout tabLayout;
     RecyclerView recycler_top_attraction;
 
-   ShimmerLayout home_shimmer_glimpse;
+    ShimmerLayout home_shimmer_glimpse;
 
     List<Places> places;
     List<Glimpses> glimpsesList;
@@ -73,9 +80,14 @@ public class HomeFragment extends Fragment {
 
         tabLayout = getActivity().findViewById(R.id.home_dot);
         viewPager = getActivity().findViewById(R.id.home_viewPager);
-home_shimmer_glimpse = getActivity().findViewById(R.id.home_shimmer_glimpse);
+        home_shimmer_glimpse = getActivity().findViewById(R.id.home_shimmer_glimpse);
 
         recycler_top_attraction = (RecyclerView) getActivity().findViewById(R.id.home_recycler_top_attraction);
+
+        hotel_recycler = getActivity().findViewById(R.id.home_recycler_hotel_nearby);
+
+        loadDataFromFirebase();
+
 
         home_shimmer_glimpse.startShimmerAnimation();
 
@@ -113,26 +125,24 @@ home_shimmer_glimpse = getActivity().findViewById(R.id.home_shimmer_glimpse);
 
         loadGlimpses();
 
-loadTopAttractionsDataFromFirebase();
+        loadTopAttractionsDataFromFirebase();
 
 
     }
 
 
-    private  void loadGlimpses(){
-        glimpsesList  = new ArrayList<>();
+    private void loadGlimpses() {
+        glimpsesList = new ArrayList<>();
         FirebaseDatabase.getInstance().getReference().child("Glimpses").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists())
-                {
-                    for (DataSnapshot glimpData : snapshot.getChildren())
-                    {
+                if (snapshot.exists()) {
+                    for (DataSnapshot glimpData : snapshot.getChildren()) {
 
                         Glimpses glimpses = new Glimpses();
                         glimpses = glimpData.getValue(Glimpses.class);
 
-                        System.out.println("Place Name = "+glimpses.getPlaceName());
+                        System.out.println("Place Name = " + glimpses.getPlaceName());
                         glimpsesList.add(glimpses);
                     }
                     setGlimpsesAdapter();
@@ -147,22 +157,47 @@ loadTopAttractionsDataFromFirebase();
         });
     }
 
-    private void loadTopAttractionsDataFromFirebase()
-    {
+    public void loadDataFromFirebase() {
+        hotelsList = new ArrayList<>();
+        FirebaseDatabase.getInstance().getReference().child("Hotels").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot data : snapshot.getChildren()) {
+                        HotelModel hotels = new HotelModel();
+                        hotels = data.getValue(HotelModel.class);
+                        hotels.setName(data.getKey());
+
+                        hotelsList.add(hotels);
+
+                        System.out.println("data form fb = " + hotels.getName());
+
+                    }
+
+                    setHotelsNearbyAdapterAdapter();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void loadTopAttractionsDataFromFirebase() {
         places = new ArrayList<>();
 
         FirebaseDatabase.getInstance().getReference().child("Places").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists())
-                {
-                    for(DataSnapshot data : snapshot.getChildren())
-                    {
+                if (snapshot.exists()) {
+                    for (DataSnapshot data : snapshot.getChildren()) {
                         Places tempPlace = new Places();
                         tempPlace = data.getValue(Places.class);
                         tempPlace.setOriginalName(data.getKey());
 
-                     places.add(tempPlace);
+                        places.add(tempPlace);
 
                     }
                     setTopAttractionAdapter();
@@ -177,10 +212,9 @@ loadTopAttractionsDataFromFirebase();
         });
     }
 
-    private void setTopAttractionAdapter()
-
-    {System.out.println("function above");
-        topAttractionsAdapter = new TopAttractionsAdapter(places,getContext());
+    private void setTopAttractionAdapter() {
+        System.out.println("function above");
+        topAttractionsAdapter = new TopAttractionsAdapter(places, getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 
         recycler_top_attraction.setLayoutManager(layoutManager);
@@ -197,10 +231,8 @@ loadTopAttractionsDataFromFirebase();
     }
 
 
-
-    private void setGlimpsesAdapter()
-    {
-        HomeGlimpseViewPagerAdapter viewPagerAdapter = new HomeGlimpseViewPagerAdapter(glimpsesList,getContext());
+    private void setGlimpsesAdapter() {
+        HomeGlimpseViewPagerAdapter viewPagerAdapter = new HomeGlimpseViewPagerAdapter(glimpsesList, getContext());
 
         viewPager.setAdapter(viewPagerAdapter);
 
@@ -208,7 +240,6 @@ loadTopAttractionsDataFromFirebase();
         home_shimmer_glimpse.setVisibility(View.GONE);
 
         viewPager.setVisibility(View.VISIBLE);
-
 
 
         new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
@@ -220,6 +251,27 @@ loadTopAttractionsDataFromFirebase();
     }
 
 
+    public void setHotelsNearbyAdapterAdapter() {
+
+
+        HomeHotel homeHotelNearBy = new HomeHotelNearBy(getContext(),hotelsList);
+        ////HomeHotel hotelsNearByAdapter = new HotelsNearByAdapter(getContext(), hotelsList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+
+        hotel_recycler.setLayoutManager(layoutManager);
+        hotel_recycler.setHasFixedSize(true);
+        hotel_recycler.setAdapter(homeHotelNearBy);
+
+        System.out.println("setting adapter = ");
+
+        try {
+
+            hotel_recycler.addItemDecoration(new DividerItemDecoration(getContext(), layoutManager.getOrientation()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }

@@ -2,6 +2,7 @@ package com.CollegeTimeDevelopers.Mysuru.Models.NearBy.Lists;
 
 public class HotelList {
     String name,imageUrl,priceRange, address;
+
     double rating;
 
 
