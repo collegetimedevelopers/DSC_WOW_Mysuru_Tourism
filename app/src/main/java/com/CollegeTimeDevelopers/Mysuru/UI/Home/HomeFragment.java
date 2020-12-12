@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-
+import com.CollegeTimeDevelopers.Mysuru.Adapters.*;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -254,11 +254,11 @@ List<HotelModel> hotelsList;
     public void setHotelsNearbyAdapterAdapter() {
 
 
-        HomeHotel homeHotelNearBy = new HomeHotelNearBy(getContext(),hotelsList);
+        HomeHotelNearBy homeHotelNearBy = new HomeHotelNearBy(getContext(),hotelsList);
         ////HomeHotel hotelsNearByAdapter = new HotelsNearByAdapter(getContext(), hotelsList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 
-        hotel_recycler.setLayoutManager(layoutManager);
+        hotel_recycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         hotel_recycler.setHasFixedSize(true);
         hotel_recycler.setAdapter(homeHotelNearBy);
 

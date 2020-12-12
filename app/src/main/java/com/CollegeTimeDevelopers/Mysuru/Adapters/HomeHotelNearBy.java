@@ -1,3 +1,5 @@
+package com.CollegeTimeDevelopers.Mysuru.Adapters;
+
 import android.content.Context;
 import android.text.Layout;
 import android.view.LayoutInflater;
