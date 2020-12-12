@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.CollegeTimeDevelopers.Mysuru.Adapters.HomeGlimpseViewPagerAdapter;
+import com.CollegeTimeDevelopers.Mysuru.Adapters.HomeHotelNearBy;
 import com.CollegeTimeDevelopers.Mysuru.Adapters.HotelsNearByAdapter;
 import com.CollegeTimeDevelopers.Mysuru.Adapters.TopAttractionsAdapter;
 import com.CollegeTimeDevelopers.Mysuru.Models.HotelModel;

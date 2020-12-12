@@ -1,5 +1,4 @@
 package com.CollegeTimeDevelopers.Mysuru.Adapters;
-
 import android.content.Context;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -19,9 +18,6 @@ import java.util.List;
 
 public class HomeHotelNearBy extends RecyclerView.Adapter<HomeHotelNearBy.ViewHolder>
 {
-
-
-
 
     Context context;
     List<HotelModel> hotelLists;
@@ -61,6 +57,7 @@ public class HomeHotelNearBy extends RecyclerView.Adapter<HomeHotelNearBy.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             hotelImage = itemView.findViewById(R.id.layout_home_hotel_nearby_img);
             hotelName = itemView.findViewById(R.id.layout_home_hotel_nearby_name);
            // priceRange = itemView.findViewById(R.id.hotel_near_by_price_range);
