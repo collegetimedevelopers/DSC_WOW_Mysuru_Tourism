@@ -147,7 +147,6 @@
                             android:layout_gravity="end"
                             android:layout_marginEnd="4dp"
                             android:id="@+id/place_details_place_navigation"
-
                             android:src="@drawable/ic_outline_navigation_24"
                             app:tint="#1C0F8F" />
                     </LinearLayout>
@@ -159,24 +158,24 @@
                     android:layout_height="2dp"
                     android:layout_margin="7dp"
                     android:background="@drawable/shimmer_skelton" />
-
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="-8dp"
                     android:fontFamily="@font/cambria_bold"
-                    android:padding="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
                     android:text="Souvenirs"
                     android:textColor="#6E6A6A"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:id="@+id/place_details_recycler_souvenirs"
-
                     android:layout_margin="10dp"
                     android:orientation="horizontal" />
 
@@ -224,7 +223,7 @@
                             android:gravity="center"
                             android:fontFamily="@font/cantata_one"
                             android:text="The Mysore Palace is a historical palace and the royal residence at Mysore in the Indian State of Karnataka. It is the official residence of the Wadiyar dynasty and the seat of the Kingdom of Mysore. The palace is in the centre of Mysore, and faces the Chamundi Hills eastward.The architectural style of domes of the palace is commonly described as Indo-Saracenic, with blends of the Hindu, Mughal, Rajput, and Gothic styles. It is a three-story stone structure with marble domes, and has a 145-foot five-story tower. The palace is surrounded by a large garden. The entrance gate and arch hold the emblem and coat of arms of the kingdom of Mysore, around which is written the kingdom's motto in Sanskrit: न बिभॆति कदाचन ."
-
+                            android:id="@+id/place_details_place_description"
                             android:textColor="#858080" />
 
                     </LinearLayout>
@@ -274,7 +273,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:layout_margin="12dp"
                     android:id="@+id/place_details_recycler_hotels_near_me"
 
