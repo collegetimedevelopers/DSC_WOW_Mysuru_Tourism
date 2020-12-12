@@ -37,10 +37,13 @@ public class HomeHotelNearBy extends RecyclerView.Adapter<HomeHotelNearBy.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeHotelNearBy.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomeHotelNearBy.ViewHolder holder, int position)
+    {
+        Glide.with(context).load(hotelLists.get(position).getImageURL().get(0)).into(holder.hotelImage);
 
         holder.hotelName.setText(hotelLists.get(position).getName());
-        Glide.with(context).load(hotelLists.get(position).getImageURL().get(0)).into(holder.hotelImage);
+
+        holder.hotelPriceRange.setText(hotelLists.get(position).getPriceRange());
 
 
     }
@@ -52,7 +55,7 @@ public class HomeHotelNearBy extends RecyclerView.Adapter<HomeHotelNearBy.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView hotelImage;
-        TextView hotelName;
+        TextView hotelName,hotelPriceRange;
      //   TextView priceRange;
 
         public ViewHolder(@NonNull View itemView) {
@@ -60,7 +63,8 @@ public class HomeHotelNearBy extends RecyclerView.Adapter<HomeHotelNearBy.ViewHo
 
             hotelImage = itemView.findViewById(R.id.layout_home_hotel_nearby_img);
             hotelName = itemView.findViewById(R.id.layout_home_hotel_nearby_name);
-           // priceRange = itemView.findViewById(R.id.hotel_near_by_price_range);
+            hotelPriceRange = itemView.findViewById(R.id.layout_home_hotel_nearby_price);
+
         }
     }
 }

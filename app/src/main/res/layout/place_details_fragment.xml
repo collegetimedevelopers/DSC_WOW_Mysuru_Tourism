@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     android:background="#191717"
     tools:context=".UI.PlaceDetails.PlaceDetailsFragment">
 
@@ -18,7 +19,6 @@
 
             <com.flaviofaria.kenburnsview.KenBurnsView
                 android:id="@+id/place_details_kbv"
-
                 android:layout_width="match_parent"
                 android:layout_height="450dp"
                 android:scaleType="fitXY"
@@ -37,6 +37,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
                 android:background="@android:color/transparent"
                 app:tabBackground="@drawable/tab_selector"
                 app:tabGravity="center"
@@ -52,6 +54,7 @@
             android:layout_marginTop="-9dp"
             android:layout_marginEnd="12dp"
             android:elevation="12dp"
+            android:backgroundTint="#fff"
             android:padding="8dp"
             app:cardCornerRadius="8dp">
 
@@ -117,7 +120,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_outline_access_time_24"
-
                         app:tint="#298310" />
 
                     <TextView
@@ -127,7 +129,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:id="@+id/place_details_place_open_close"
-
+android:textColor="#5E5B5B"
                         android:fontFamily="@font/cambria_bold"
                         android:gravity="start|center_vertical"
                         android:text="10:00 - 18:00"
@@ -174,8 +176,10 @@
                     android:textColor="#6E6A6A"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
+                    android:nestedScrollingEnabled="false"
                     android:layout_height="100dp"
                     android:id="@+id/place_details_recycler_souvenirs"
                     android:layout_margin="10dp"
@@ -255,7 +259,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:id="@+id/place_details_recycler_guide"
-
+                    android:nestedScrollingEnabled="false"
                     android:orientation="horizontal" />
 
                 <TextView
@@ -274,8 +278,9 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="12dp"
+                    android:nestedScrollingEnabled="false"
                     android:id="@+id/place_details_recycler_hotels_near_me"
 
                     android:orientation="horizontal" />
@@ -300,6 +305,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
                     android:layout_margin="12dp"
                     android:id="@+id/place_details_recycler_bus_stop"
                     android:orientation="horizontal" />

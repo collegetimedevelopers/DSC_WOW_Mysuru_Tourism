@@ -27,6 +27,8 @@ import com.CollegeTimeDevelopers.Mysuru.R;
 import com.bumptech.glide.Glide;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.flaviofaria.kenburnsview.Transition;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.Objects;
 
@@ -67,7 +69,8 @@ public class PlaceDetailsFragment extends Fragment {
     @BindView(R.id.place_details_recycler_hotels_near_me)
     RecyclerView hotels_near_by_recycler_view;
 
-
+@BindView(R.id.place_details_dot)
+        TabLayout tabLayout;
 
 
 
@@ -102,9 +105,11 @@ public class PlaceDetailsFragment extends Fragment {
 
 
         viewPager2.setAdapter(new PlaceDetailsViewpagerAdapter(getContext(),selectedPlace.getImageUrl()));
+
         placeName.setText(selectedPlace.getFmaousName());
         openCloseTime.setText(selectedPlace.getOpeningTime()+"-"+selectedPlace.getClosingTime());
         placeDescription.setText(selectedPlace.getLongDescription());
+
     }
 
     @Override
@@ -121,13 +126,14 @@ public class PlaceDetailsFragment extends Fragment {
 
             @Override
             public void onTransitionEnd(Transition transition) {
+                    tabLayout.setVisibility(View.VISIBLE);
                     kbv.setVisibility(View.GONE);
                     viewPager2.setVisibility(View.VISIBLE);
             }
         });
 
 
-        Glide.with(Objects.requireNonNull(getContext())).load("https://media.gettyimages.com/photos/maharajas-palace-at-night-india-picture-id470216784?k=6&m=470216784&s=612x612&w=0&h=X9DCMmeH3GIH4nP9mXso-gfkzKRrhSV5K6-jq64gd3Q=").into(kbv);
+        Glide.with(Objects.requireNonNull(getContext())).load(selectedPlace.getImageUrl().get(0)).into(kbv);
 
 //        AccelerateDecelerateInterpolator adi = new AccelerateDecelerateInterpolator();
 //        RandomTransitionGenerator generator = new RandomTransitionGenerator(5000, adi);
@@ -148,6 +154,14 @@ public class PlaceDetailsFragment extends Fragment {
         });
 
 
+        new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+
+            }
+        }).attach();
+
+
 //        kbv.setTransitionListener(new KenBurnsView.TransitionListener() {
 //                    @Override
 //                    public void onTransitionStart(Transition transition) {
@@ -158,7 +172,8 @@ public class PlaceDetailsFragment extends Fragment {
 //                    public void onTransitionEnd(Transition transition)
 //                    {
 //
-//                        kbv.pause();
+//                        kbv.setVisibility(View.GONE);
+//                        viewPager2.setVisibility(View.VISIBLE);
 //                    }
 //                });
         mViewModel = new ViewModelProvider(this).get(PlaceDetailsViewModel.class);
@@ -167,7 +182,12 @@ public class PlaceDetailsFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        unbinder.unbind();
+
+        try {
+            unbinder.unbind();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

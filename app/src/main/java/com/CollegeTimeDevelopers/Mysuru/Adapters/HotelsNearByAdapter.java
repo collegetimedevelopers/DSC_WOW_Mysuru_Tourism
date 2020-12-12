@@ -24,14 +24,12 @@ public class HotelsNearByAdapter extends RecyclerView.Adapter<HotelsNearByAdapte
         this.context = context;
         this.hotelLists = hotelLists;
 
-        System.out.println("in adapter = ");
-
     }
 
     @NonNull
     @Override
     public HotelsNearByAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new HotelsNearByAdapter.ViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_nearby_hotels,parent,false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_nearby_hotels, parent, false));
     }
 
     @Override
@@ -43,6 +41,7 @@ public class HotelsNearByAdapter extends RecyclerView.Adapter<HotelsNearByAdapte
 
         holder.priceRange.setText(hotelLists.get(position).getPriceRange());
 
+System.out.println("PriceRange = "+hotelLists.get(position).getPriceRange());
 
 
     }
@@ -52,15 +51,17 @@ public class HotelsNearByAdapter extends RecyclerView.Adapter<HotelsNearByAdapte
         return hotelLists.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView hotelImage;
         TextView hotelName;
         TextView priceRange;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             hotelImage = itemView.findViewById(R.id.hotel_nearby_image);
             hotelName = itemView.findViewById(R.id.hotel_near_by_name);
             priceRange = itemView.findViewById(R.id.hotel_near_by_price_range);
+
         }
     }
 }

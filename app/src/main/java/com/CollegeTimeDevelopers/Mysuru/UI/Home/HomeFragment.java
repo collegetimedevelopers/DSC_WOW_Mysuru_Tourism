@@ -165,6 +165,7 @@ List<HotelModel> hotelsList;
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     for (DataSnapshot data : snapshot.getChildren()) {
+
                         HotelModel hotels = new HotelModel();
                         hotels = data.getValue(HotelModel.class);
                         hotels.setName(data.getKey());
