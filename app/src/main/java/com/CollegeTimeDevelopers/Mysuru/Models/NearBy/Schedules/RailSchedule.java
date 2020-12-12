@@ -2,7 +2,8 @@ package com.CollegeTimeDevelopers.Mysuru.Models.NearBy.Schedules;
 
 public class RailSchedule {
     int trainNumber;
-    String arrival, departure,runsWeekDays,trainName;
+    String arrival, departure,runsWeekDays,trainName ;
+
 
     public RailSchedule(int trainNumber, String arrival, String departure, String runsWeekDays, String trainName) {
         this.trainNumber = trainNumber;

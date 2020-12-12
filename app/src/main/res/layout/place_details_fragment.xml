@@ -28,15 +28,15 @@
                 android:id="@+id/place_details_view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="450dp"
-                android:background="#fff"
-                android:padding="3dp"
+                android:background="#191717"
                 android:visibility="gone" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/place_details_dot"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="10dp"
                 android:background="@android:color/transparent"
                 app:tabBackground="@drawable/tab_selector"
                 app:tabGravity="center"
@@ -87,7 +87,9 @@
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="16dp"
                         android:gravity="center"
+
                         android:text="😁"
+                        android:textSize="22sp"
                         android:id="@+id/place_details_place_rate"
                         android:textAlignment="center"
                         android:textColor="#F1BD04" />
@@ -210,7 +212,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
                             android:layout_margin="8dp"
-
                             android:background="#FFF" />
 
 
@@ -219,7 +220,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="15dp"
                             android:paddingEnd="15dp"
-                            android:paddingBottom="18dp"
+                            android:paddingBottom="22dp"
                             android:gravity="center"
                             android:fontFamily="@font/cantata_one"
                             android:text="The Mysore Palace is a historical palace and the royal residence at Mysore in the Indian State of Karnataka. It is the official residence of the Wadiyar dynasty and the seat of the Kingdom of Mysore. The palace is in the centre of Mysore, and faces the Chamundi Hills eastward.The architectural style of domes of the palace is commonly described as Indo-Saracenic, with blends of the Hindu, Mughal, Rajput, and Gothic styles. It is a three-story stone structure with marble domes, and has a 145-foot five-story tower. The palace is surrounded by a large garden. The entrance gate and arch hold the emblem and coat of arms of the kingdom of Mysore, around which is written the kingdom's motto in Sanskrit: न बिभॆति कदाचन ."

@@ -1,12 +1,14 @@
 package com.CollegeTimeDevelopers.Mysuru;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.CollegeTimeDevelopers.Mysuru.Common.Common;
 import com.CollegeTimeDevelopers.Mysuru.EventBus.TopAttractionClickEvent;
 import com.CollegeTimeDevelopers.Mysuru.UI.Home.HomeFragment;
+import com.CollegeTimeDevelopers.Mysuru.UI.Hotel.HotelFragment;
 import com.CollegeTimeDevelopers.Mysuru.UI.PlaceDetails.PlaceDetailsFragment;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .addItem(new BottomNavigationItem(R.drawable.ic_outline_directions_railway_24, "Transport").setActiveColor("#3336E3").setInActiveColor("#3336E3"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_baseline_tour_24, "Home").setActiveColor("#121111").setInActiveColor("#FFFFFF"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_baseline_hotel_24, "Hotel").setActiveColor("#989898").setInActiveColor("#10FFFF"))
-                .addItem(new BottomNavigationItem(R.drawable.ic_guide_24,"Guide").setActiveColor("#530267").setInActiveColor("#b000bf"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_guide_24, "Guide").setActiveColor("#530267").setInActiveColor("#b000bf"))
 
                 .setFirstSelectedPosition(2)
                 .initialise();
@@ -50,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
-                switch (position)
-                {
+                switch (position) {
                     case 3:
-                      //  getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PlaceDetailsFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HotelFragment()).commit();
                         break;
                     case 2:
-                      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
 
                         break;
@@ -75,21 +76,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    @Subscribe (threadMode = ThreadMode.MAIN, sticky = false)
-    public void topAttractionPlacesClicked(TopAttractionClickEvent event){
-        if(event.isSuccess()){
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = false)
+    public void topAttractionPlacesClicked(TopAttractionClickEvent event) {
+        if (event.isSuccess()) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PlaceDetailsFragment()).commit();
-            Common.CURRENT_FRAGMENT =1;
+            Common.CURRENT_FRAGMENT = 1;
         }
     }
 
     @Override
     public void onBackPressed() {
-    if(Common.CURRENT_FRAGMENT == 1){
-        getSupportFragmentManager().popBackStack();
-        Common.CURRENT_FRAGMENT = 0;
-    }else{
-        super.onBackPressed();
-    }
+        if (Common.CURRENT_FRAGMENT == 1) {
+            getSupportFragmentManager().popBackStack();
+            Common.CURRENT_FRAGMENT = 0;
+        } else {
+            super.onBackPressed();
+        }
     }
 }
