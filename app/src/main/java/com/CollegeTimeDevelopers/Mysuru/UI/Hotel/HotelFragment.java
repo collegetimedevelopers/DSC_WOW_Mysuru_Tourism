@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.greenrobot.eventbus.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +61,7 @@ public class HotelFragment extends Fragment {
 
 
         loadHotelDataFromFirebase();
+
         loadResturantDataFromFirebase();
     }
 
@@ -68,7 +71,7 @@ public class HotelFragment extends Fragment {
      //
 
 
-        FirebaseDatabase.getInstance().getReference().child("Hotels").orderByChild("category").equalTo("hotel")
+        FirebaseDatabase.getInstance().getReference("Hotels/").orderByChild("category").equalTo("hotel")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -89,6 +92,9 @@ public class HotelFragment extends Fragment {
 
                     setHotelsAdapterAdapter();
                 }
+                else {
+                    System.out.println("Not FOund hotel");
+                }
             }
 
             @Override
@@ -103,7 +109,7 @@ public  void  loadResturantDataFromFirebase()
 {
     resturantList = new ArrayList<>();
 
-    FirebaseDatabase.getInstance().getReference().child("Hotels").orderByChild("category").equalTo("restaurant").addListenerForSingleValueEvent(new ValueEventListener() {
+    FirebaseDatabase.getInstance().getReference("Hotels/").orderByChild("category").equalTo("restaurant").addListenerForSingleValueEvent(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
             if (snapshot.exists())
@@ -121,7 +127,9 @@ public  void  loadResturantDataFromFirebase()
 
                 }
 
-                setResturantAdapterAdapter();
+                setRestaurantAdapter();
+            }else {
+                System.out.println("Not FOund resurant");
             }
         }
 
@@ -158,11 +166,11 @@ public  void  loadResturantDataFromFirebase()
     }
 
 
-    public void setResturantAdapterAdapter()
+    public void setRestaurantAdapter()
     {
 
 
-        HomeHotelNearBy homeHotelNearBy = new HomeHotelNearBy(getContext(),hotelsList);
+        HomeHotelNearBy homeHotelNearBy = new HomeHotelNearBy(getContext(),resturantList);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 
@@ -170,7 +178,7 @@ public  void  loadResturantDataFromFirebase()
         resturant_recycler.setHasFixedSize(true);
         resturant_recycler.setAdapter(homeHotelNearBy);
 
-        System.out.println("setting adapter = ");
+
 
         try {
 

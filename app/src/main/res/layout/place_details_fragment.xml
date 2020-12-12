@@ -90,7 +90,6 @@
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="16dp"
                         android:gravity="center"
-
                         android:text="😁"
                         android:textSize="22sp"
                         android:id="@+id/place_details_place_rate"
@@ -180,7 +179,7 @@ android:textColor="#5E5B5B"
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:nestedScrollingEnabled="false"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/place_details_recycler_souvenirs"
                     android:layout_margin="10dp"
                     android:orientation="horizontal" />
@@ -307,7 +306,7 @@ android:textColor="#5E5B5B"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
                     android:layout_margin="12dp"
-                    android:id="@+id/place_details_recycler_bus_stop"
+                    android:id="@+id/place_details_recycler_bus"
                     android:orientation="horizontal" />
 
 

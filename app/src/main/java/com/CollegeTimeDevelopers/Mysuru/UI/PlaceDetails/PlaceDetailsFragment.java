@@ -3,6 +3,8 @@ package com.CollegeTimeDevelopers.Mysuru.UI.PlaceDetails;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,8 +18,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
+import com.CollegeTimeDevelopers.Mysuru.Adapters.BusAdapter;
 import com.CollegeTimeDevelopers.Mysuru.Adapters.HotelsNearByAdapter;
 import com.CollegeTimeDevelopers.Mysuru.Adapters.PlaceDetailsSouvenirRecyclerAdapter;
 import com.CollegeTimeDevelopers.Mysuru.Adapters.PlaceDetailsViewpagerAdapter;
@@ -65,18 +69,25 @@ public class PlaceDetailsFragment extends Fragment {
     @BindView(R.id.place_details_place_description)
     TextView placeDescription;
 
+    @BindView(R.id.place_details_place_rate)
+    TextView place_rate;
+
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.place_details_recycler_hotels_near_me)
     RecyclerView hotels_near_by_recycler_view;
 
-@BindView(R.id.place_details_dot)
-        TabLayout tabLayout;
 
+    @BindView(R.id.place_details_recycler_bus)
+    RecyclerView recycler_bus;
+
+    @BindView(R.id.place_details_dot)
+    TabLayout tabLayout;
 
 
     Places selectedPlace;
     KenBurnsView kbv;
-    boolean moving =true;
+    boolean moving = true;
+
     public static PlaceDetailsFragment newInstance() {
         return new PlaceDetailsFragment();
     }
@@ -84,31 +95,46 @@ public class PlaceDetailsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-         root = inflater.inflate(R.layout.place_details_fragment, container, false);
-        unbinder =  ButterKnife.bind(this,root);
+        root = inflater.inflate(R.layout.place_details_fragment, container, false);
+        unbinder = ButterKnife.bind(this, root);
         init();
 
         return root;
     }
+
     @SuppressLint("SetTextI18n")
-    void init(){
-        selectedPlace  = Common.CURRENT_SELECTED_PLACE;
+    void init() {
+        selectedPlace = Common.CURRENT_SELECTED_PLACE;
         //Settinf Up Souvenir
         souvenir_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        souvenir_recycler_view.setAdapter(new PlaceDetailsSouvenirRecyclerAdapter(getContext(),selectedPlace.getSouvenir().getItems()));
+        souvenir_recycler_view.setAdapter(new PlaceDetailsSouvenirRecyclerAdapter(getContext(), selectedPlace.getSouvenir().getItems()));
 
         //Setting Up Hotels
 
         hotels_near_by_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        hotels_near_by_recycler_view.setAdapter(new HotelsNearByAdapter(getContext(),selectedPlace.getNearBy().getHotels().getList()));
 
 
-        viewPager2.setAdapter(new PlaceDetailsViewpagerAdapter(getContext(),selectedPlace.getImageUrl()));
+        hotels_near_by_recycler_view.setAdapter(new HotelsNearByAdapter(getContext(), selectedPlace.getNearBy().getHotels().getList()));
+
+     //setting up bus data
+        recycler_bus.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+
+        BusAdapter busAdapter = new BusAdapter(getContext(),selectedPlace.getNearBy().getBusStand().getSchedule());
+
+        recycler_bus.setAdapter(busAdapter);
+
+
+        viewPager2.setAdapter(new PlaceDetailsViewpagerAdapter(getContext(), selectedPlace.getImageUrl()));
 
         placeName.setText(selectedPlace.getFmaousName());
-        openCloseTime.setText(selectedPlace.getOpeningTime()+"-"+selectedPlace.getClosingTime());
+        openCloseTime.setText(selectedPlace.getOpeningTime() + "-" + selectedPlace.getClosingTime());
         placeDescription.setText(selectedPlace.getLongDescription());
+
+
+
+
+
 
     }
 
@@ -126,13 +152,15 @@ public class PlaceDetailsFragment extends Fragment {
 
             @Override
             public void onTransitionEnd(Transition transition) {
-                    tabLayout.setVisibility(View.VISIBLE);
-                    kbv.setVisibility(View.GONE);
-                    viewPager2.setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.VISIBLE);
+                kbv.setVisibility(View.GONE);
+                viewPager2.setVisibility(View.VISIBLE);
             }
         });
 
+        setRatingEmoticon();
 
+        // to set image to kenburns view
         Glide.with(Objects.requireNonNull(getContext())).load(selectedPlace.getImageUrl().get(0)).into(kbv);
 
 //        AccelerateDecelerateInterpolator adi = new AccelerateDecelerateInterpolator();
@@ -178,7 +206,45 @@ public class PlaceDetailsFragment extends Fragment {
 //                });
         mViewModel = new ViewModelProvider(this).get(PlaceDetailsViewModel.class);
 
+        placeNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String geoUri = "http://maps.google.com/maps?q=loc:" + selectedPlace.getLocation().getLat() + ","
+                            + selectedPlace.getLocation().getLng() + " (" + selectedPlace.getLocation().getLocality() + ")";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+                    getContext().startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
     }
+
+
+    private void setRatingEmoticon() {
+        Double rating = selectedPlace.getRating();
+        if (rating <= 1) {
+            place_rate.setText("😤");
+            place_rate.setTooltipText("Rating is " + String.valueOf(rating));
+        } else if (rating <= 2 && rating > 1) {
+            place_rate.setText("😑");
+            place_rate.setTooltipText("Rating is " + String.valueOf(rating));
+        } else if (rating <= 3 && rating > 2) {
+            place_rate.setText("🙂");
+            place_rate.setTooltipText("Rating is " + String.valueOf(rating));
+        } else if (rating <= 4 && rating > 3) {
+            place_rate.setText("😀");
+            place_rate.setTooltipText("Rating is " + String.valueOf(rating));
+        } else {
+            place_rate.setText("😁");
+            place_rate.setTooltipText("Rating is " + String.valueOf(rating));
+        }
+
+    }
+
     @Override
     public void onStop() {
         super.onStop();

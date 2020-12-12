@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../Shubh/AppData/Local/Android/Sdk/icons/material/materialicons/call/baseline_call_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../KAMAL%20NAYAN/AppData/Local/Android/Sdk/icons/material/materialicons/forward/baseline_forward_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="2761ff" />
-                            <entry key="outputName" value="ic_baseline_call_24" />
+                            <entry key="outputName" value="ic_baseline_forward_24" />
                             <entry key="sourceFile" value="C:\Users\Shubhangam Garg\Documents\MysuruTourism" />
                           </map>
                         </option>

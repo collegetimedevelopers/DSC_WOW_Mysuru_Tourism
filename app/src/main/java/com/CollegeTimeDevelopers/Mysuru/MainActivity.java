@@ -11,6 +11,7 @@ import com.CollegeTimeDevelopers.Mysuru.UI.Emergency.Emergency;
 import com.CollegeTimeDevelopers.Mysuru.UI.Home.HomeFragment;
 import com.CollegeTimeDevelopers.Mysuru.UI.Hotel.HotelFragment;
 import com.CollegeTimeDevelopers.Mysuru.UI.PlaceDetails.PlaceDetailsFragment;
+import com.CollegeTimeDevelopers.Mysuru.UI.Transport.TransportFragment;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
@@ -54,15 +55,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(int position) {
                 switch (position) {
-                    case 3:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HotelFragment()).commit();
+                    case 0:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Emergency()).commit();
+                        break;
+                    case 1:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new TransportFragment()).commit();
                         break;
                     case 2:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                         break;
-                    case 0:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Emergency()).commit();
+                    case 3:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HotelFragment()).commit();
                         break;
+
 
                 }
             }

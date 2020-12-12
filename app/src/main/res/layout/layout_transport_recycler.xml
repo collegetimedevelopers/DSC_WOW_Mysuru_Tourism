@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="3dp"
+    app:cardCornerRadius="9dp"
+
+    tools:context=".UI.Transport.TransportFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:id="@+id/transport_recycler_train_source"
+                android:fontFamily="@font/cambria_bold"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="Source"
+                android:textColor="#E1DDDD"
+
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/ic_baseline_forward_24"
+                app:tint="#1A8135" />
+<!---->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:id="@+id/transport_recycler_train_dest"
+                android:fontFamily="@font/cambria_bold"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="Destination"
+                android:textColor="#E1DDDD"
+
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/cambria_bold"
+                android:gravity="center"
+                android:id="@+id/transport_recycler_train_s_time"
+                android:padding="4dp"
+                android:text="Source"
+                android:textColor="#AFAAAA"
+
+                />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/cambria_bold"
+                android:gravity="center"
+                android:id="@+id/transport_recycler_train_dest_time"
+                android:padding="4dp"
+                android:text="Destination"
+                android:textColor="#AFAAAA"
+
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="5dp"
+            android:background="#878686" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#0C1887"
+                app:cardCornerRadius="5dp">
+
+                <TextView
+                    android:id="@+id/transport_recycler_train_numb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="6dp"
+                    android:text="1505"
+                    android:textColor="#fff" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/transport_recycler_train_name"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/gotham_bold"
+                android:padding="4dp"
+                android:text="Train Name"
+                android:textColor="#9F9B9B" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center"
+                android:padding="5dp"
+                android:id="@+id/transport_recycler_day_sunday"
+                android:text="S" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center"
+                android:id="@+id/transport_recycler_day_monday"
+                android:padding="5dp"
+                android:text="M" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/transport_recycler_day_tuesday"
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="T" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/gotham_bold"
+                android:id="@+id/transport_recycler_day_wednesday"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="W" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center"
+                android:id="@+id/transport_recycler_day_thursday"
+                android:padding="5dp"
+                android:text="T" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/gotham_bold"
+                android:id="@+id/transport_recycler_day_friday"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="F" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center"
+                android:id="@+id/transport_recycler_day_saturday"
+                android:padding="5dp"
+                android:text="S" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
