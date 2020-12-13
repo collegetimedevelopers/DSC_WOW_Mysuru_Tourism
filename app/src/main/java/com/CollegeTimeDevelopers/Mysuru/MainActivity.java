@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 .setMode(BottomNavigationBar.MODE_SHIFTING);
 
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.ic_baseline_emergency_24, "Emergency").setActiveColor("#CC1418").setInActiveColor("#CC1418"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_baseline_emergency_24, "Help and Support").setActiveColor("#CC1418").setInActiveColor("#CC1418"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_outline_directions_railway_24, "Transport").setActiveColor("#3336E3").setInActiveColor("#3336E3"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_baseline_tour_24, "Home").setActiveColor("#121111").setInActiveColor("#FFFFFF"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_baseline_hotel_24, "Hotel").setActiveColor("#989898").setInActiveColor("#10FFFF"))
